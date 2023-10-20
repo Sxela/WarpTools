@@ -153,7 +153,7 @@ def install_dependencies_colab(is_colab, root_dir):
     gitclone('https://github.com/Stability-AI/generative-models')
     gitclone('https://github.com/Sxela/ComfyUI')
     gitclone('https://github.com/ArtVentureX/comfyui-animatediff')
-    gitclone('https://github.com/guoyww/animatediff/', commit='9d32153349aa15c6867a61f65b3e4bec74aa403a')
+    gitclone('https://github.com/guoyww/animatediff', commit='9d32153349aa15c6867a61f65b3e4bec74aa403a')
 
     progress_bar.update(3) #20
     try:
