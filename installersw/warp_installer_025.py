@@ -36,7 +36,7 @@ def replace_line(file_path, old_line, new_line):
     with open(file_path, 'w') as file:
         file.writelines(lines)
 
-def gitclone(url, recursive=False, dest=None, branch=None):
+def gitclone(url, recursive=False, dest=None, branch=None, commit=None):
   command = ['git', 'clone']
   if branch is not None:
     command.append(['-b', branch])
@@ -46,6 +46,14 @@ def gitclone(url, recursive=False, dest=None, branch=None):
 
   res = subprocess.run(command, stdout=subprocess.PIPE).stdout.decode('utf-8')
   print(res)
+  if commit is not None:
+    if dest is not None: 
+      os.chdir(dest)
+    else: 
+      os.chdir(url.split('/')[-1].split('.git')[0])
+    command = ['git','checkout',commit]
+    res = subprocess.run(command, stdout=subprocess.PIPE).stdout.decode('utf-8')
+    print(res)
 
 def nukedir(dir):
     if dir[-1] == os.sep: dir = dir[:-1]
@@ -145,7 +153,7 @@ def install_dependencies_colab(is_colab, root_dir):
     gitclone('https://github.com/Stability-AI/generative-models')
     gitclone('https://github.com/Sxela/ComfyUI')
     gitclone('https://github.com/ArtVentureX/comfyui-animatediff')
-    gitclone('https://github.com/guoyww/animatediff/')
+    gitclone('https://github.com/guoyww/animatediff/', commit='9d32153349aa15c6867a61f65b3e4bec74aa403a')
 
     progress_bar.update(3) #20
     try:
