@@ -54,6 +54,7 @@ def gitclone(url, recursive=False, dest=None, branch=None, commit=None):
     command = ['git','checkout',commit]
     res = subprocess.run(command, stdout=subprocess.PIPE).stdout.decode('utf-8')
     print(res)
+    os.chdir('../')
 
 def nukedir(dir):
     if dir[-1] == os.sep: dir = dir[:-1]
