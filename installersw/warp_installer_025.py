@@ -141,7 +141,7 @@ def install_dependencies_colab(is_colab, root_dir):
   """
   subprocess.run(['python','-m','pip','-q','install','tqdm','ipywidgets==7.7.1','protobuf==3.20.3'])
   from tqdm.notebook import tqdm
-  progress_bar = tqdm(total=52)
+  progress_bar = tqdm(total=51)
   progress_bar.set_description("Installing dependencies")
   with io.capture_output(stderr=False) as captured:
     subprocess.run(['python','-m','pip','-q','install','mediapipe','piexif'])
