@@ -98,6 +98,12 @@ def gitpull(dir, force_branch=None, reset=False, commit=None, target_repo=None):
 
 def pull_repos(is_colab):
   gitpull('./ComfyUI', reset=True, target_repo='https://github.com/Sxela/ComfyUI')
+
+  file_path = './ComfyUI/comfy/sd.py'  # Replace with your file path
+  new_line_content = "#from . import clip_vision"
+  old_line = "from . import clip_vision"
+  replace_line(file_path, old_line, new_line_content)
+
   gitpull('./stablediffusion')
   gitpull('./ControlNet')
   gitpull('./k-diffusion')
