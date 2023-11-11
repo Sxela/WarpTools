@@ -148,7 +148,7 @@ def install_dependencies_colab(is_colab, root_dir):
     gitclone('https://github.com/Sxela/sxela-stablediffusion', dest = 'stablediffusion')
     gitclone('https://github.com/Sxela/ControlNet-v1-1-nightly', dest = 'ControlNet')
     gitclone('https://github.com/pengbo-learn/python-color-transfer')
-    gitclone('https://github.com/Stability-AI/generative-models')
+    gitclone('https://github.com/Sxela/generative-models')
     gitclone('https://github.com/Sxela/ComfyUI')
 
     progress_bar.update(3) #20
