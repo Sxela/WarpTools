@@ -267,7 +267,7 @@ def install_dependencies_colab(is_colab, root_dir):
 
 def install_torch_colab(force_torch_reinstall, use_torch_v2):
       subprocess.run(['python', '-m', 'pip', '-q', 'install',
-      ' https://download.pytorch.org/whl/cu121/xformers-0.0.22.post4-cp310-cp310-manylinux2014_x86_64.whl'])
+      'https://download.pytorch.org/whl/cu121/xformers-0.0.22.post4-cp310-cp310-manylinux2014_x86_64.whl'])
       return 0
 
 def install_torch_windows(force_torch_reinstall, use_torch_v2):
