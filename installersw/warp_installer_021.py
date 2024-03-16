@@ -253,9 +253,16 @@ def install_dependencies_colab(is_colab, root_dir):
 
     replace_line(file_path, old_line, new_line_content)
 
+# def install_torch_colab(force_torch_reinstall, use_torch_v2):
+#       subprocess.run(['python', '-m', 'pip', '-q', 'install',
+#       'https://download.pytorch.org/whl/cu121/xformers-0.0.22.post4-cp310-cp310-manylinux2014_x86_64.whl'])
+#       return 0
+
 def install_torch_colab(force_torch_reinstall, use_torch_v2):
+      print('Downgrading torch and xformers.')
+      subprocess.run(['pip', 'uninstall', 'torch', 'xformers', '-y'])
       subprocess.run(['python', '-m', 'pip', '-q', 'install',
-      'https://download.pytorch.org/whl/cu121/xformers-0.0.22.post4-cp310-cp310-manylinux2014_x86_64.whl'])
+      'torch==2.0.1', 'torchvision==0.15.2', '--extra-index-url', 'https://download.pytorch.org/whl/cu118', 'xformers==0.0.21'])
       return 0
 
 def install_torch_windows(force_torch_reinstall, use_torch_v2):
