@@ -257,6 +257,7 @@ def install_dependencies_colab(is_colab, root_dir):
     subprocess.run(['python','setup.py','develop','-q'])
     os.chdir(root_dir)
     subprocess.run(['python','-m','pip','-q','install','torchmetrics==0.11.4'])
+    subprocess.run(['python','-m','pip','uninstall','jax','-y'])
 
     file_path = f'{root_dir}/ComfyUI/comfy/sd.py'  # Replace with your file path
     line_number_to_replace = 14  # Replace with the line number you want to replace
