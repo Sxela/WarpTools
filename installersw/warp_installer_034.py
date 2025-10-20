@@ -182,6 +182,7 @@ def install_dependencies_colab(is_colab, root_dir):
     progress_bar.update(2) #25
 
     subprocess.run(['python','-m','pip','-q','install','-e','./stablediffusion'])
+    subprocess.run(['python','-m','pip','-q','install','--upgrade','--force-reinstall','numpy==1.26.4','opencv-python==4.5.5.64'])
     progress_bar.update(2)
     pipi('ipywidgets==7.7.1')
     pipi('transformers==4.31.0')
