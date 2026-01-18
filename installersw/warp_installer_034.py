@@ -150,8 +150,8 @@ def install_dependencies_colab(is_colab, root_dir):
   progress_bar = tqdm(total=51)
   progress_bar.set_description("Installing dependencies")
   with io.capture_output(stderr=False) as captured:
-    subprocess.run(['python','-m','pip','-q','install','mediapipe','piexif'])
-    subprocess.run(['python','-m','pip','-q','install','safetensors==0.3.2','lark'])
+    subprocess.run(['python','-m','pip','-q','install','piexif'])
+    subprocess.run(['python','-m','pip','-q','install','safetensors==0.3.2','lark', 'tokenizers>=0.15.2'])
     subprocess.run(['python','-m','pip','-q','uninstall','torchtext','-y'])
     progress_bar.update(3) #10
     gitclone('https://github.com/Sxela/sxela-stablediffusion', dest = 'stablediffusion')
@@ -182,20 +182,15 @@ def install_dependencies_colab(is_colab, root_dir):
     progress_bar.update(2) #25
 
     subprocess.run(['python','-m','pip','-q','install','-e','./stablediffusion'])
-    subprocess.run(['python','-m','pip','-q','install','--upgrade','--force-reinstall','numpy==1.26.4','opencv-python==4.5.5.64'])
+    subprocess.run(['python','-m','pip','-q','install','--upgrade','--force-reinstall','numpy==1.26.4','opencv-python==4.5.5.64', 'mediapipe==0.10.14', "huggingface_hub==0.20.3", "accelerate==0.26.1", "transformers==4.40.2", "diffusers==0.11.1", 'open_clip_torch==2.24.0'])
     progress_bar.update(2)
     pipi('ipywidgets==7.7.1')
-    pipi('transformers==4.31.0')
     progress_bar.update(2)
     pipi('omegaconf')
     pipi('einops')
     pipi("pytorch_lightning>1.4.1,<=1.7.7")
     pipi('scikit-image')
-    pipi('opencv-python')
     progress_bar.update(3) #30
-    pipi('scikit-image')
-    pipi('opencv-python')
-    progress_bar.update(2)
     pipi('ai-tools')
     pipi('cognitive-face')
     progress_bar.update(2)
@@ -218,7 +213,6 @@ def install_dependencies_colab(is_colab, root_dir):
     pipi('wget')
     pipi('webdataset')
     progress_bar.update(2)
-    pipi('open_clip_torch')
     pipi('opencv-contrib-python==4.5.5.64')
     progress_bar.update(2)
     subprocess.run(['python','-m','pip','-q','uninstall','torchtext','-y'])
@@ -231,7 +225,6 @@ def install_dependencies_colab(is_colab, root_dir):
       subprocess.run(['apt', 'install', 'imagemagick'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     progress_bar.update(5)
     subprocess.run(['pip','install','onnxruntime-gpu','gdown'])
-    pipi('diffusers==0.11.1')
 
     try:
       from resize_right import resize
